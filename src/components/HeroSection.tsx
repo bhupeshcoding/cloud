@@ -14,20 +14,20 @@ const HeroSection = () => {
           <div className="flex items-center justify-center gap-2 mb-6">
             <Shield className="w-8 h-8 text-primary-foreground" />
             <span className="text-primary-foreground/80 font-medium tracking-wide">
-              UTTARAKHAND FLOOD RECOGNITION SYSTEM
+              GLOBAL FLOOD & WEATHER RECOGNITION SYSTEM
             </span>
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-6 leading-tight">
             AI-Powered
             <span className="block bg-gradient-to-r from-accent to-primary-glow bg-clip-text text-transparent">
-              Flood Detection
+              Flood & Cloud Detection
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-primary-foreground/80 max-w-3xl mx-auto mb-12 leading-relaxed">
-            Early warning system using satellite imagery and AI to protect communities 
-            across Uttarakhand from flood disasters
+            Advanced AI system for flood detection, cloud pattern analysis, and weather monitoring 
+            to protect communities worldwide including Australia, India, and beyond
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
@@ -58,7 +58,7 @@ const HeroSection = () => {
               <h3 className="font-semibold text-lg">Real-time Analysis</h3>
             </div>
             <p className="text-muted-foreground">
-              Instant AI-powered flood detection from satellite and drone imagery
+              Advanced AI analysis for flood detection and cloud pattern recognition
             </p>
           </Card>
 
@@ -67,10 +67,10 @@ const HeroSection = () => {
               <div className="p-2 bg-success/20 rounded-lg">
                 <MapPin className="w-6 h-6 text-success" />
               </div>
-              <h3 className="font-semibold text-lg">Regional Coverage</h3>
+              <h3 className="font-semibold text-lg">Global Coverage</h3>
             </div>
             <p className="text-muted-foreground">
-              Comprehensive monitoring across all districts of Uttarakhand
+              Worldwide monitoring including Australia, India, and other regions
             </p>
           </Card>
 
@@ -79,10 +79,10 @@ const HeroSection = () => {
               <div className="p-2 bg-warning/20 rounded-lg">
                 <AlertTriangle className="w-6 h-6 text-warning" />
               </div>
-              <h3 className="font-semibold text-lg">Early Warning</h3>
+              <h3 className="font-semibold text-lg">Weather & Cloud Analysis</h3>
             </div>
             <p className="text-muted-foreground">
-              Proactive alerts to emergency services and local communities
+              Real-time weather reports and cloud burst detection capabilities
             </p>
           </Card>
         </div>

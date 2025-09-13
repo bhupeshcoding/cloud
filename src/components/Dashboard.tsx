@@ -13,13 +13,15 @@ import {
 } from "lucide-react";
 
 const Dashboard = () => {
-  const districts = [
-    { name: "Dehradun", status: "safe", alerts: 0, lastUpdate: "2 min ago" },
-    { name: "Haridwar", status: "medium", alerts: 2, lastUpdate: "5 min ago" },
-    { name: "Pauri Garhwal", status: "high", alerts: 5, lastUpdate: "1 min ago" },
-    { name: "Tehri Garhwal", status: "safe", alerts: 0, lastUpdate: "3 min ago" },
-    { name: "Uttarkashi", status: "medium", alerts: 1, lastUpdate: "7 min ago" },
-    { name: "Chamoli", status: "safe", alerts: 0, lastUpdate: "4 min ago" },
+  const regions = [
+    { name: "Sydney, Australia", status: "safe", alerts: 0, lastUpdate: "2 min ago" },
+    { name: "Mumbai, India", status: "medium", alerts: 2, lastUpdate: "5 min ago" },
+    { name: "Perth, Australia", status: "high", alerts: 5, lastUpdate: "1 min ago" },
+    { name: "Uttarakhand, India", status: "safe", alerts: 0, lastUpdate: "3 min ago" },
+    { name: "Brisbane, Australia", status: "medium", alerts: 1, lastUpdate: "7 min ago" },
+    { name: "Chennai, India", status: "safe", alerts: 0, lastUpdate: "4 min ago" },
+    { name: "Melbourne, Australia", status: "medium", alerts: 3, lastUpdate: "6 min ago" },
+    { name: "Delhi, India", status: "safe", alerts: 0, lastUpdate: "8 min ago" },
   ];
 
   const getStatusColor = (status: string) => {
@@ -45,10 +47,10 @@ const Dashboard = () => {
       <div className="container px-6 max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-foreground mb-4">
-            Emergency Dashboard
+            Global Monitoring Dashboard
           </h2>
           <p className="text-xl text-muted-foreground">
-            Real-time monitoring of flood conditions across Uttarakhand
+            Real-time monitoring of flood conditions, weather, and cloud patterns worldwide
           </p>
         </div>
 
@@ -58,8 +60,8 @@ const Dashboard = () => {
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-success-foreground/80 text-sm font-medium">Districts Safe</p>
-                  <p className="text-3xl font-bold text-success-foreground">11</p>
+                  <p className="text-success-foreground/80 text-sm font-medium">Regions Safe</p>
+                  <p className="text-3xl font-bold text-success-foreground">24</p>
                 </div>
                 <Shield className="w-8 h-8 text-success-foreground" />
               </div>
@@ -70,8 +72,8 @@ const Dashboard = () => {
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-warning-foreground text-sm font-medium">Active Alerts</p>
-                  <p className="text-3xl font-bold text-warning-foreground">8</p>
+                  <p className="text-warning-foreground text-sm font-medium">Global Alerts</p>
+                  <p className="text-3xl font-bold text-warning-foreground">12</p>
                 </div>
                 <AlertTriangle className="w-8 h-8 text-warning-foreground" />
               </div>
@@ -83,7 +85,7 @@ const Dashboard = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-primary-foreground/80 text-sm font-medium">People Protected</p>
-                  <p className="text-3xl font-bold text-primary-foreground">1.2M</p>
+                  <p className="text-3xl font-bold text-primary-foreground">15.7M</p>
                 </div>
                 <Users className="w-8 h-8 text-primary-foreground" />
               </div>
@@ -110,38 +112,38 @@ const Dashboard = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <MapPin className="w-6 h-6 text-primary" />
-                  District-wise Status
+                  Regional Status Monitor
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {districts.map((district, index) => (
+                  {regions.map((region, index) => (
                     <div 
-                      key={district.name}
-                      className={`flex items-center justify-between p-4 rounded-lg border transition-all duration-300 hover:shadow-md ${getStatusBg(district.status)}`}
+                      key={region.name}
+                      className={`flex items-center justify-between p-4 rounded-lg border transition-all duration-300 hover:shadow-md ${getStatusBg(region.status)}`}
                     >
                       <div className="flex items-center gap-4">
                         <div className="flex flex-col">
-                          <span className="font-semibold text-lg">{district.name}</span>
+                          <span className="font-semibold text-lg">{region.name}</span>
                           <span className="text-sm text-muted-foreground">
-                            Updated {district.lastUpdate}
+                            Updated {region.lastUpdate}
                           </span>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
                         <div className="text-right">
                           <p className="text-sm text-muted-foreground">Active Alerts</p>
-                          <p className="text-xl font-bold">{district.alerts}</p>
+                          <p className="text-xl font-bold">{region.alerts}</p>
                         </div>
                         <Badge 
                           variant="outline" 
                           className={`${
-                            district.status === 'safe' ? 'border-success text-success' :
-                            district.status === 'medium' ? 'border-warning text-warning' :
+                            region.status === 'safe' ? 'border-success text-success' :
+                            region.status === 'medium' ? 'border-warning text-warning' :
                             'border-destructive text-destructive'
                           }`}
                         >
-                          {district.status.toUpperCase()}
+                          {region.status.toUpperCase()}
                         </Badge>
                       </div>
                     </div>
@@ -188,22 +190,22 @@ const Dashboard = () => {
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <p className="font-medium">High risk alert issued</p>
-                      <p className="text-muted-foreground">Pauri Garhwal • 2 min ago</p>
+                      <p className="font-medium">High cloud burst risk detected</p>
+                      <p className="text-muted-foreground">Perth, Australia • 2 min ago</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-success rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <p className="font-medium">Area cleared as safe</p>
-                      <p className="text-muted-foreground">Dehradun • 15 min ago</p>
+                      <p className="font-medium">Weather conditions stabilized</p>
+                      <p className="text-muted-foreground">Sydney, Australia • 15 min ago</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-warning rounded-full mt-2 flex-shrink-0"></div>
                     <div>
-                      <p className="font-medium">Monitoring alert issued</p>
-                      <p className="text-muted-foreground">Haridwar • 32 min ago</p>
+                      <p className="font-medium">Flood monitoring alert</p>
+                      <p className="text-muted-foreground">Mumbai, India • 32 min ago</p>
                     </div>
                   </div>
                 </div>

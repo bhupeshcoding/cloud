@@ -8,8 +8,10 @@ import {
   Clock, 
   TrendingUp, 
   Download,
-  Share2 
+  Share2,
+  Cloud
 } from "lucide-react";
+import WeatherReport from "./WeatherReport";
 
 interface AnalysisResult {
   floodDetected: boolean;
@@ -17,6 +19,19 @@ interface AnalysisResult {
   riskLevel: 'low' | 'medium' | 'high';
   affectedArea: number;
   timestamp: string;
+  cloudPattern?: {
+    detected: boolean;
+    type: 'cumulus' | 'cumulonimbus' | 'stratus' | 'cirrus';
+    cloudBurstRisk: 'low' | 'medium' | 'high';
+    coverage: number;
+  };
+  weather?: {
+    temperature: number;
+    humidity: number;
+    windSpeed: number;
+    pressure: number;
+    location: string;
+  };
 }
 
 interface AnalysisResultsProps {
@@ -58,7 +73,7 @@ const AnalysisResults = ({ result }: AnalysisResultsProps) => {
             Analysis Results
           </h2>
           <p className="text-xl text-muted-foreground">
-            AI-powered flood detection analysis for Uttarakhand region
+            AI-powered flood detection, cloud pattern analysis, and weather monitoring
           </p>
         </div>
 
@@ -184,8 +199,8 @@ const AnalysisResults = ({ result }: AnalysisResultsProps) => {
                   <span className="font-semibold">FloodNet v2.1</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Region</span>
-                  <span className="font-semibold">Uttarakhand</span>
+                  <span className="text-muted-foreground">Location</span>
+                  <span className="font-semibold">{result.weather?.location || 'Global'}</span>
                 </div>
               </CardContent>
             </Card>
@@ -211,6 +226,24 @@ const AnalysisResults = ({ result }: AnalysisResultsProps) => {
             </Card>
           </div>
         </div>
+
+        {/* Weather and Cloud Analysis */}
+        {result.weather && result.cloudPattern && (
+          <div className="mt-12">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-foreground mb-2">
+                Weather & Cloud Analysis
+              </h3>
+              <p className="text-muted-foreground">
+                Environmental conditions and cloud pattern assessment
+              </p>
+            </div>
+            <WeatherReport 
+              weather={result.weather} 
+              cloudPattern={result.cloudPattern} 
+            />
+          </div>
+        )}
       </div>
     </section>
   );

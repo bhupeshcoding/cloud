@@ -10,6 +10,19 @@ interface AnalysisResult {
   riskLevel: 'low' | 'medium' | 'high';
   affectedArea: number;
   timestamp: string;
+  cloudPattern?: {
+    detected: boolean;
+    type: 'cumulus' | 'cumulonimbus' | 'stratus' | 'cirrus';
+    cloudBurstRisk: 'low' | 'medium' | 'high';
+    coverage: number;
+  };
+  weather?: {
+    temperature: number;
+    humidity: number;
+    windSpeed: number;
+    pressure: number;
+    location: string;
+  };
 }
 
 const Index = () => {

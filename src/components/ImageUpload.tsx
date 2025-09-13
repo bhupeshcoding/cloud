@@ -70,13 +70,29 @@ const ImageUpload = ({ onAnalysisComplete }: ImageUploadProps) => {
       setAnalysisProgress(intervals[i]);
     }
 
-    // Simulate analysis result
+    // Simulate comprehensive analysis result
+    const cloudTypes = ['cumulus', 'cumulonimbus', 'stratus', 'cirrus'];
+    const locations = ['Sydney, Australia', 'Mumbai, India', 'Uttarakhand, India', 'Perth, Australia', 'Delhi, India'];
+    
     const mockResult = {
       floodDetected: Math.random() > 0.5,
       confidence: Math.floor(Math.random() * 30) + 70,
       riskLevel: Math.random() > 0.6 ? 'high' : Math.random() > 0.3 ? 'medium' : 'low',
       affectedArea: Math.floor(Math.random() * 500) + 100,
       timestamp: new Date().toISOString(),
+      cloudPattern: {
+        detected: Math.random() > 0.3,
+        type: cloudTypes[Math.floor(Math.random() * cloudTypes.length)],
+        cloudBurstRisk: Math.random() > 0.6 ? 'high' : Math.random() > 0.3 ? 'medium' : 'low',
+        coverage: Math.floor(Math.random() * 60) + 20,
+      },
+      weather: {
+        temperature: Math.floor(Math.random() * 25) + 15,
+        humidity: Math.floor(Math.random() * 40) + 40,
+        windSpeed: Math.floor(Math.random() * 30) + 5,
+        pressure: Math.floor(Math.random() * 50) + 990,
+        location: locations[Math.floor(Math.random() * locations.length)],
+      },
     };
 
     setIsAnalyzing(false);
@@ -84,7 +100,7 @@ const ImageUpload = ({ onAnalysisComplete }: ImageUploadProps) => {
 
     toast({
       title: "Analysis Complete",
-      description: `Flood ${mockResult.floodDetected ? 'detected' : 'not detected'} with ${mockResult.confidence}% confidence`,
+      description: `Flood ${mockResult.floodDetected ? 'detected' : 'not detected'}, Cloud pattern: ${mockResult.cloudPattern?.type || 'none'}`,
       variant: mockResult.floodDetected ? "destructive" : "default",
     });
   };
@@ -103,7 +119,7 @@ const ImageUpload = ({ onAnalysisComplete }: ImageUploadProps) => {
             Upload Satellite Imagery
           </h2>
           <p className="text-xl text-muted-foreground">
-            Drop your satellite or aerial images for instant flood analysis
+            Drop your satellite or aerial images for flood detection, cloud pattern analysis, and weather monitoring
           </p>
         </div>
 
