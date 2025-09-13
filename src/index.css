@@ -2,41 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Flood Recognition System Design System - Uttarakhand Emergency Management */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core System Colors */
+    --background: 210 20% 98%;
+    --foreground: 215 25% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 215 25% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Professional Blue (Trust & Water) */
+    --primary: 210 85% 45%;
+    --primary-foreground: 210 20% 98%;
+    --primary-glow: 210 85% 60%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Soft Blue Gray */
+    --secondary: 215 15% 92%;
+    --secondary-foreground: 215 25% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted Tones */
+    --muted: 215 15% 95%;
+    --muted-foreground: 215 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Highlighting */
+    --accent: 200 85% 50%;
+    --accent-foreground: 210 20% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Alert System Colors */
+    --success: 142 70% 45%;
+    --success-foreground: 142 70% 98%;
+    --warning: 38 90% 55%;
+    --warning-foreground: 38 90% 10%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 75% 98%;
+    --critical: 15 85% 50%;
+    --critical-foreground: 15 85% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* UI Elements */
+    --border: 215 20% 88%;
+    --input: 215 20% 94%;
+    --ring: 210 85% 45%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-hero: linear-gradient(135deg, hsl(210 85% 25%) 0%, hsl(210 85% 45%) 50%, hsl(200 85% 50%) 100%);
+    --gradient-alert: linear-gradient(135deg, hsl(var(--warning)) 0%, hsl(var(--critical)) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)) 0%, hsl(142 70% 60%) 100%);
+    --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
+
+    /* Shadows */
+    --shadow-card: 0 4px 20px -2px hsl(var(--primary) / 0.15);
+    --shadow-elevated: 0 10px 40px -8px hsl(var(--primary) / 0.25);
+    --shadow-alert: 0 8px 32px -4px hsl(var(--warning) / 0.3);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +128,80 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-alert {
+    background: var(--gradient-alert);
+  }
+
+  .gradient-success {
+    background: var(--gradient-success);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .shadow-alert {
+    box-shadow: var(--shadow-alert);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-spring {
+    transition: var(--transition-spring);
+  }
+
+  /* Emergency Alert Animations */
+  @keyframes pulse-alert {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-pulse-alert {
+    animation: pulse-alert 2s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out forwards;
+  }
+
+  /* Flood Risk Indicators */
+  .risk-low {
+    background: var(--gradient-success);
+  }
+
+  .risk-medium {
+    background: var(--gradient-alert);
+  }
+
+  .risk-high {
+    background: linear-gradient(135deg, hsl(var(--critical)) 0%, hsl(var(--destructive)) 100%);
   }
 }

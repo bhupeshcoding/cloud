@@ -1,13 +1,31 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import HeroSection from "@/components/HeroSection";
+import ImageUpload from "@/components/ImageUpload";
+import AnalysisResults from "@/components/AnalysisResults";
+import Dashboard from "@/components/Dashboard";
+
+interface AnalysisResult {
+  floodDetected: boolean;
+  confidence: number;
+  riskLevel: 'low' | 'medium' | 'high';
+  affectedArea: number;
+  timestamp: string;
+}
 
 const Index = () => {
+  const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
+
+  const handleAnalysisComplete = (result: AnalysisResult) => {
+    setAnalysisResult(result);
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <main className="min-h-screen">
+      <HeroSection />
+      <ImageUpload onAnalysisComplete={handleAnalysisComplete} />
+      {analysisResult && <AnalysisResults result={analysisResult} />}
+      <Dashboard />
+    </main>
   );
 };
 
