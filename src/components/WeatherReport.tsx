@@ -23,8 +23,11 @@ interface WeatherData {
 interface CloudPattern {
   detected: boolean;
   type: 'cumulus' | 'cumulonimbus' | 'stratus' | 'cirrus';
-  cloudBurstRisk: 'low' | 'medium' | 'high';
+  cloudBurstRisk: 'low' | 'medium' | 'high' | 'extreme';
   coverage: number;
+  windShear?: number;
+  moistureContent?: number;
+  confidence?: number;
 }
 
 interface WeatherReportProps {
@@ -48,6 +51,7 @@ const WeatherReport = ({ weather, cloudPattern }: WeatherReportProps) => {
       case 'low': return 'success';
       case 'medium': return 'warning';
       case 'high': return 'destructive';
+      case 'extreme': return 'destructive';
       default: return 'secondary';
     }
   };

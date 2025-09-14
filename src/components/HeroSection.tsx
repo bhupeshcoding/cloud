@@ -31,20 +31,20 @@ const HeroSection = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-            <Button 
+            {/* <Button 
               size="lg" 
               className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 px-8 py-4 text-lg font-semibold shadow-elevated transition-spring"
             >
               <Zap className="w-5 h-5 mr-2" />
               Start Analysis
-            </Button>
-            <Button 
+            </Button> */}
+            {/* <Button 
               variant="outline" 
               size="lg"
               className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 px-8 py-4 text-lg transition-smooth"
             >
               View Dashboard
-            </Button>
+            </Button> */}
           </div>
         </div>
 
